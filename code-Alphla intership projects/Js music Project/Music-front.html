@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Music App - Juni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-accent: #ff4757;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --text-secondary: #a4b0be;
+        }
+
+        body {
+            /* Dynamic Mesh Gradient Background 🌈 */
+            background: linear-gradient(-45deg, #1e272e, #5352ed, #ff4757, #2f3542);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card 🧊 */
+        .player-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2.5rem;
+            width: 350px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+
+        .album-art-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        #cover {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%; /* Circular for the vinyl look 💿 */
+            border: 8px solid rgba(255,255,255,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        /* Rotation animation when playing */
+        .playing #cover {
+            animation: rotateVinyl 10s linear infinite;
+        }
+
+        @keyframes rotateVinyl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Custom Progress Bar 📈 */
+        .progress {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            background-color: var(--primary-accent);
+            box-shadow: 0 0 15px var(--primary-accent);
+            transition: width 0.1s linear;
+        }
+
+        /* Modern Controls ⏭️ */
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .control-btn:hover {
+            color: var(--primary-accent);
+            transform: scale(1.1);
+        }
+
+        #play-btn {
+            width: 65px;
+            height: 65px;
+            background: var(--primary-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.3);
+        }
+
+        input[type="range"] {
+            accent-color: var(--primary-accent);
+        }
+    </style>
+</head>
+<body>
+<div class="player-card p-5 text-center text-white" id="player-container">
+    <div class="album-art-container">
+        <img src="https://picsum.photos/250/250?random=1" id="cover" alt="Album Art">
+    </div>
+
+    <div class="song-details mb-4">
+        <h2 id="title" class="h4 fw-bold mb-1">Electronic Drive</h2>
+        <p id="artist" class="small" style="color: var(--text-secondary)">Synth Wave</p>
+    </div>
+
+    <div class="mb-4">
+        <div class="progress" id="progress-container">
+            <div class="progress-bar" id="progress" style="width: 0%"></div>
+        </div>
+        <div class="d-flex justify-content-between mt-2 x-small text-secondary" style="font-size: 0.75rem;">
+            <span id="current-time">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-around align-items-center mb-4">
+        <button id="prev" class="control-btn">⏮</button>
+        <button id="play-btn" class="border-0">
+            <span id="play-icon" style="font-size: 1.8rem;">▶</span>
+        </button>
+        <button id="next" class="control-btn">⏭</button>
+
+    </div>
+    <div class="d-flex justify-content-center gap-4 mb-3">
+    <button id="shuffle" class="control-btn">🔀</button>
+    <button id="repeat" class="control-btn">🔁</button>
+</div>
+
+<div id="playlist" class="mt-3 text-white small" style="max-height:150px; overflow-y:auto;"></div>
+
+    <div class="d-flex align-items-center gap-2 mb-4">
+        <span style="font-size: 0.9rem;">🔈</span>
+        <input type="range" class="form-range" id="volume" min="0" max="1" step="0.1" value="1">
+    </div>
+
+    <div class="developer-info pt-3 border-top border-secondary opacity-50">
+        <p class="small mb-0">Developed by <span class="fw-bold">Juni</span></p>
+    </div>
+</div>
+
+<script src="Music.js"></script>
+</body>
+</html>

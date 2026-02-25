@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Vision Gallery - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Smooth Entrance Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Initial state for items before animation */
+        header, .filter-nav, .category-title, .card, .main-footer {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        /* Animation Delays for Staggered Effect */
+        header { animation-delay: 0.2s; }
+        .filter-nav { animation-delay: 0.4s; }
+        .category-title { animation-delay: 0.6s; }
+        
+        /* Cards staggered load */
+        .card:nth-child(1) { animation-delay: 0.7s; }
+        .card:nth-child(2) { animation-delay: 0.8s; }
+        .card:nth-child(3) { animation-delay: 0.9s; }
+        .card:nth-child(4) { animation-delay: 1.0s; }
+        .card:nth-child(5) { animation-delay: 1.1s; }
+        
+        .main-footer { animation-delay: 1.3s; }
+
+        /* Page Transition Overlay */
+        #loader-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #0a0a0b; /* Matching your theme bg */
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top-color: #ffb800; /* Royal Gold */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loaded #loader-overlay {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="loader-overlay">
+        <div class="loader-circle"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Welcome to Gallery Made on Juni Life</h1>
+            <h2 style="color: #ffb800;">Made by Juni</h2>
+            
+            <nav class="filter-nav">
+                <a href="Gallery.html" class="filter-btn active">Home</a>
+                <a href="school-life.html" class="filter-btn" target="_blank">School Life</a>
+                <a href="college.html" class="filter-btn" target="_blank">College Life</a>
+                <a href="Uni-life.html" class="filter-btn" target="_blank">Uni Life</a>
+                <a href="city.html" class="filter-btn" target="_blank">City Life</a>
+                <a href="Fav-person.html" class="filter-btn" target="_blank">Fav Person</a>
+            </nav>
+        </header>
+
+        <main id="grid">
+            <section class="category-box">
+                <h2 class="category-title">Recent Memories</h2>
+                <p style="color: #ccc; margin-bottom: 20px;">Click the buttons above to see full galleries for each life stage.</p>
+                
+                <div class="gallery-grid">
+                    <div class="card">
+                        <a href="school-life.html" target="_blank">
+                            <img src="images/School-image/Gemini_Generated_Image_v51fc9v51fc9v51f.png" alt="School Life">
+                            <div class="card-info"><h3>School Life</h3><p>View Full Gallery</p></div>
+                        </a>
+                    </div>
+                    
+                    <div class="card">
+                        <a href="college.html" target="_blank">
+                            <img src="images/Clg-image/clg-homepage.png" alt="College Life">
+                            <div class="card-info"><h3>College Life</h3><p>View Full Gallery</p></div>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <a href="Uni-life.html" target="_blank">
+                            <img src="images/UNi-image/Uni-life.png" alt="University Life">
+                            <div class="card-info"><h3>University Life</h3><p>View Full Gallery</p></div>
+                        </a>
+                    </div>
+                   
+                    <div class="card">
+                        <a href="city.html" target="_blank">
+                            <img src="images/Village-image/village-life.png" alt="City Life">
+                            <div class="card-info"><h3>City Life</h3><p>View Full Gallery</p></div>
+                        </a>
+                    </div>
+
+                    <div class="card">
+                        <a href="Fav-person.html" target="_blank">
+                            <img src="images/Fav-person/Fav-person.png" alt="Favourite Person">
+                            <div class="card-info"><h3>Favourite Person</h3><p>View Full Gallery</p></div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3 class="footer-logo">JUNI <span style="color: #ffb800;">LIFE</span></h3>
+                <p>A digital gallery dedicated to capturing the journey of life, from school days to city lights.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="Gallery.html">Home</a></li>
+                    <li><a href="school-life.html" target="_blank">School Life</a></li>
+                    <li><a href="college.html" target="_blank">College Life</a></li>
+                    <li><a href="Uni-life.html" target="_blank">University Life</a></li>
+                    <li><a href="Fav-person.html" target="_blank">Favourite Person</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section social">
+                <h4>Follow My Journey</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">Instagram</a>
+                    <a href="#" class="social-icon">Facebook</a>
+                    <a href="#" class="social-icon">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Juni Life Gallery | Designed with ❤️</p>
+            <button id="backToTop" class="back-to-top">↑ Top</button>
+        </div>
+    </footer>
+
+    <script>
+        // Remove loader when page is fully loaded
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Back to Top Smooth Scroll
+        const topBtn = document.getElementById('backToTop');
+        topBtn.onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // Click Animation for Buttons
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = "scale(0.9)";
+                setTimeout(() => { this.style.transform = "scale(1.05)"; }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
